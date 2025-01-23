@@ -71,3 +71,17 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+Cookie Clicker/UserSettings/
+
+Cookie Clicker/Library/
+
+Cookie Clicker/Logs/
+
+Cookie Clicker 3D/Library/
+
+Cookie Clicker 3D/Temp/
+
+Cookie Clicker 3D/UserSettings/
+
+Cookie Clicker 3D/Logs/
