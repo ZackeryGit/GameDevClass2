@@ -5,8 +5,15 @@ using UnityEngine;
 public class TapManager : MonoBehaviour
 {
 
+    private bool active = true;
+
+    public bool Active {
+        get { return active; }
+        set { active = value; }
+    }
+
     private void Update(){
-        if (Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0) && active == true){
             HandleTap();
         }
     }

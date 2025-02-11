@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Upgrade", menuName = "Upgrades/Upgrade")]
@@ -7,10 +8,12 @@ public class Upgrade : ScriptableObject
 {
 
     public string upgradeName;
+    public Image image;
     public int currentLevel;
     public int maxLevel;
     public double baseCost;
     public string description;
+    public UpgradeReq mainPrerequisite;
     public List<UpgradeReq> prerequisites;
     
     public double GetUpgradeCost(){
@@ -41,6 +44,15 @@ public class Upgrade : ScriptableObject
         Debug.Log("Preq Met");
         return true;
     }
+
+    public bool MainPrerequisiteMet(List<Upgrade> allUpgrades){
+        if (mainPrerequisite == null || allUpgrades.Contains(mainPrerequisite.upgrade) && mainPrerequisite.level <= mainPrerequisite.upgrade.currentLevel){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 
     public void SetLevel(int level){
         currentLevel = level;

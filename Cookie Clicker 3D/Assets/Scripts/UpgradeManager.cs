@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UpgradeManager : MonoBehaviour
 {
     public DoubleData currency;
     public List<Upgrade> allUpgrades;
+
+    public UnityEvent onAnyUpgrade;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,7 @@ public class UpgradeManager : MonoBehaviour
         if (IsUpgradeAvailable(upgrade) && currency.value >= upgrade.GetUpgradeCost()){
             currency.value -= upgrade.GetUpgradeCost();
             upgrade.currentLevel ++;
+            onAnyUpgrade.Invoke();
         }
     }
 }

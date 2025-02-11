@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Momentum Unlock
   m_EditorClassIdentifier: 
   upgradeName: Unlock Momentum
-  currentLevel: 1
+  currentLevel: 0
   maxLevel: 1
   baseCost: 90000
   description: Earn more for clicking consecutively
+  mainPrerequisite: {fileID: 11400000, guid: 9cc2eae7d317e8d43904ffab5b1a0106, type: 2}
   prerequisites:
   - {fileID: 11400000, guid: 9cc2eae7d317e8d43904ffab5b1a0106, type: 2}
