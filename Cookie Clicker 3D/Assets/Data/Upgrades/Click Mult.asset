@@ -13,9 +13,18 @@ MonoBehaviour:
   m_Name: Click Mult
   m_EditorClassIdentifier: 
   upgradeName: Click Multiplier
-  currentLevel: 2
-  maxLevel: 10
-  baseCost: 100
   description: Multiplies the click
-  mainPrerequisite: {fileID: 0}
-  prerequisites: []
+  currentLevel: 1
+  maxLevel: 10
+  mainPrerequisite: {fileID: 11400000, guid: cce58373c3d84c54f8f8492afae44168, type: 2}
+  prerequisites:
+  - {fileID: 11400000, guid: 8817fb06bc221ee4faa06c5abd1e2f90, type: 2}
+  costList:
+  - 500
+  - 1000
+  - 2000
+  useCostList: 0
+  baseCost: 250
+  linearIncrease: 150
+  quadraticalIncrease: 25
+  scaleIntensity: 3

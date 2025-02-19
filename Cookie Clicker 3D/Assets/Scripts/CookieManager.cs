@@ -6,22 +6,22 @@ using UnityEngine.Events;
 
 public class CookieManager : MonoBehaviour
 {
-
-    public double baseClicks = 1;
     public DoubleData cookies;
     public StringData cookieText;
     public UnityEvent onCookiesUpdated;
     public UpgradeManager upgradeManager;
     private Upgrade clickMulti;
+    private Upgrade baseClicks;
 
     public void Awake(){
+        baseClicks = upgradeManager.allUpgrades.Find(u => u.upgradeName == "Base Clicks");
         clickMulti = upgradeManager.allUpgrades.Find(u => u.upgradeName == "Click Multiplier");
     }
 
     public double CalcClickedCookies(){
 
-        double totalCookies = baseClicks * (clickMulti.currentLevel + 1);
-
+        double totalCookies = (baseClicks.currentLevel + 1) * (clickMulti.currentLevel + 1);
+        totalCookies = Math.Floor(totalCookies);
         return totalCookies;
     }
 
@@ -47,6 +47,13 @@ public class CookieManager : MonoBehaviour
             return NumberFormatter.AbbreviatedFormat(num);
         }
         
+    }
+
+    private double CalculateBaseClicks(){
+
+        
+// Left off here
+        return 1f;
     }
 
 }

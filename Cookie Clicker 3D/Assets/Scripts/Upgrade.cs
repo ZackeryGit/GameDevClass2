@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
@@ -7,17 +8,36 @@ using UnityEngine;
 public class Upgrade : ScriptableObject
 {
 
+    // Upgrade Info
     public string upgradeName;
     public Image image;
+    public string description;
+
+    // Upgrade Level
     public int currentLevel;
     public int maxLevel;
-    public double baseCost;
-    public string description;
+
+    // Prerequisties
     public UpgradeReq mainPrerequisite;
     public List<UpgradeReq> prerequisites;
+
+    // Cost List
+    public List<double> costList;
+    public bool useCostList = false;
+
+    // Cost Equation
+    public double baseCost;
+    public double linearIncrease;
+    public double quadraticalIncrease;
+    public double scaleIntensity;
     
+
     public double GetUpgradeCost(){
-        return baseCost * (currentLevel + 1);
+        if (useCostList == true){
+            return costList[currentLevel];
+        } else {
+            return Math.Floor(baseCost + (linearIncrease * currentLevel) + (quadraticalIncrease * Math.Pow(currentLevel, scaleIntensity)));
+        }
     }
     
     public bool CanUpgrade(){
