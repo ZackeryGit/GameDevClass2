@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Base Clicks
   m_EditorClassIdentifier: 
   upgradeName: Base Clicks
-  description: Increase amount per click
-  currentLevel: 14
+  description: +1 Cookie Per Click
+  currentLevel: 1
   maxLevel: 25
   mainPrerequisite: {fileID: 0}
   prerequisites: []

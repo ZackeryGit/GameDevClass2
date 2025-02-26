@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,12 +9,20 @@ public class UpdateUpgradeButton : MonoBehaviour
     public UpgradeManager upgradeManager;
     public Text costField;
     public Text nameField;
+    public Text levelField;
     public Sprite disabledImage;
     public Sprite enabledImage;
 
     public void updateButton(){
         nameField.text = upgrade.upgradeName;
         costField.text = upgrade.GetUpgradeCost().ToString();
+        if (upgrade.currentLevel < upgrade.maxLevel){
+            levelField.text = upgrade.currentLevel.ToString() + " / " + upgrade.maxLevel;
+        } else {
+            levelField.text = "MAX";
+            levelField.color = Color.green;
+        }
+
 
         if (!TryGetComponent<Button>(out Button button)) return;
 
