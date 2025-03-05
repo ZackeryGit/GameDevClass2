@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Click Mult
   m_EditorClassIdentifier: 
   upgradeName: Click Multiplier
+  image: {fileID: 21300000, guid: e5b50a02e94245348bcc458df8621ed4, type: 3}
   description: 1x Added to your cookie multiplier
-  currentLevel: 0
+  currentLevel: 8
   maxLevel: 10
   mainPrerequisite: {fileID: 11400000, guid: cce58373c3d84c54f8f8492afae44168, type: 2}
   prerequisites:

@@ -10,7 +10,7 @@ public class Upgrade : ScriptableObject
 
     // Upgrade Info
     public string upgradeName;
-    public Image image;
+    public Sprite image;
     public string description;
 
     // Upgrade Level

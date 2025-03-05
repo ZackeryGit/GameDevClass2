@@ -10,12 +10,19 @@ public class UpdateUpgradeButton : MonoBehaviour
     public Text costField;
     public Text nameField;
     public Text levelField;
+    public Image imageField;
     public Sprite disabledImage;
     public Sprite enabledImage;
 
     public void updateButton(){
+        // Update Text
         nameField.text = upgrade.upgradeName;
         costField.text = upgrade.GetUpgradeCost().ToString();
+
+        // Update Image
+        imageField.sprite = upgrade.image;
+
+        // Desplay Level
         if (upgrade.currentLevel < upgrade.maxLevel){
             levelField.text = upgrade.currentLevel.ToString() + " / " + upgrade.maxLevel;
         } else {
@@ -27,7 +34,7 @@ public class UpdateUpgradeButton : MonoBehaviour
         if (!TryGetComponent<Button>(out Button button)) return;
 
 
-
+        // Get Appearance Type
         if (upgrade.PrerequisitesMet(upgradeManager.allUpgrades) == true){
             button.image.sprite = enabledImage;
             SetCanvasGroupState(1f, true);

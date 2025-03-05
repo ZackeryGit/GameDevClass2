@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Base Clicks
   m_EditorClassIdentifier: 
   upgradeName: Base Clicks
+  image: {fileID: 21300000, guid: ade519461e67c9442b79adfdd1386eb8, type: 3}
   description: +1 Cookie Per Click
-  currentLevel: 1
+  currentLevel: 25
   maxLevel: 25
   mainPrerequisite: {fileID: 0}
   prerequisites: []
