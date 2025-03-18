@@ -13,6 +13,7 @@ public class TextLabelBehavior : MonoBehaviour
     private void Start()
     {
         label = GetComponent<Text>();
+        Debug.Log("Start");
         startEvent.Invoke();
     }
 
@@ -23,6 +24,7 @@ public class TextLabelBehavior : MonoBehaviour
 
     public void UpdateLabel(IntData obj){
         label.text = obj.value.ToString();
+        Debug.Log(obj.value);
     }
 
     public void UpdateLabel (StringData obj){

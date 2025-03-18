@@ -9,7 +9,7 @@ public class UpgradeManager : MonoBehaviour
     public List<Upgrade> allUpgrades;
 
     public Upgrade selectedUpgrade;
-    public UnityEvent onAnyUpgrade;
+    public UnityEvent onAnyUpgrade, onStart;
     
     // Runs whenever an upgrade is "Selected", Getting the upgrade
     public static event Action<Upgrade> OnUpgradeButtonSelected;
@@ -21,7 +21,10 @@ public class UpgradeManager : MonoBehaviour
     {
         foreach (var upgrade in allUpgrades){
             upgrade.SetLevel(0);
+            onStart.Invoke();
         }
+
+        
     }
 
     public bool IsUpgradeAvailable(Upgrade upgrade){
