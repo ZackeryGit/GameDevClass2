@@ -6,27 +6,49 @@ using UnityEngine;
 public class Stat : ScriptableObject
 {
     public double baseValue;
-    private Dictionary<string, Func<double, double>> modifiers = new Dictionary<string, Func<double, double>>();
+    private Dictionary<string, Modifier> modifiers = new Dictionary<string, Modifier>();
 
-    public void AddorUpdateModifier(string key, Func<double, double> modifier){
-        modifiers[key] = modifier;
+    public void AddorUpdateModifier(Modifier modifier){
+        Debug.Log("Modifer Added to: " + name);
+        modifiers[modifier.modifierName] = modifier;
     }
 
-    public void RemoveModifier(string key){
+    public void RemoveModifier(string modifierName){
 
-        if (modifiers.ContainsKey(key)){
-            modifiers.Remove(key);
+        if (modifiers.ContainsKey(modifierName)){
+            modifiers.Remove(modifierName);
         }
 
     }
 
-    public double GetFinalValue()
+     public double GetFinalValue()
     {
         double finalValue = baseValue;
-        foreach (var modifier in modifiers.Values){
-            finalValue = modifier(finalValue);
+        double multiplicativeFactor = 1.0; // For multipliers and divisors
+
+        foreach (var kvp in modifiers)
+        {
+            Modifier modifier = kvp.Value;
+
+            switch (modifier.modifierType)
+            {
+                case ModifierType.Additive:
+                    finalValue += modifier.value;
+                    break;
+                case ModifierType.Subtractive:
+                    finalValue -= modifier.value;
+                    break;
+                case ModifierType.Multiplicative:
+                    multiplicativeFactor *= modifier.value;
+                    break;
+                case ModifierType.Divisive:
+                    if (modifier.value != 0) 
+                        multiplicativeFactor /= modifier.value;
+                    break;
+            }
         }
-        return finalValue;
+
+        return finalValue * multiplicativeFactor;
     }
 
 }

@@ -21,10 +21,11 @@ public class UpgradeManager : MonoBehaviour
     {
         foreach (var upgrade in allUpgrades){
             upgrade.SetLevel(0);
-            onStart.Invoke();
         }
-
-        
+        onStart.Invoke();
+        foreach (var upgrade in allUpgrades){
+            upgrade.applyUpgrade();
+        }
     }
 
     public bool IsUpgradeAvailable(Upgrade upgrade){
@@ -36,6 +37,7 @@ public class UpgradeManager : MonoBehaviour
         if (IsUpgradeAvailable(upgrade) && currency.value >= upgrade.GetUpgradeCost()){
             currency.value -= upgrade.GetUpgradeCost();
             upgrade.currentLevel ++;
+            upgrade.applyUpgrade();
             onAnyUpgrade.Invoke();
         }
     }

@@ -9,16 +9,17 @@ public class CookieManager : MonoBehaviour
     public IntData totalClicks;
     public DoubleData cookies;
     public StringData cookieText;
-    public UnityEvent onCookiesUpdated, onStart;
+    public UnityEvent onCookiesUpdated, onStart, turnGold, goldClick;
     public UpgradeManager upgradeManager;
-    private Upgrade clickMulti;
-    private Upgrade baseClicks;
+    public Stat BaseClickStat;
+    public Stat ClickMultiplier;   
+    public Upgrade GoldenClicksUnlcok;
+    public Stat clicksPerGold;
 
     private Boolean isGolden = false;
 
     public void Awake(){
-        baseClicks = upgradeManager.allUpgrades.Find(u => u.upgradeName == "Base Clicks");
-        clickMulti = upgradeManager.allUpgrades.Find(u => u.upgradeName == "Click Multiplier");
+        
     }
 
     public void Start()
@@ -27,8 +28,15 @@ public class CookieManager : MonoBehaviour
     }
 
     public double CalcClickedCookies(){
+        double totalCookies = BaseClickStat.GetFinalValue() * ClickMultiplier.GetFinalValue();
+        
+        //Gold boost
+        if (isGolden) {
+            isGolden = false;
+            goldClick.Invoke();
+            totalCookies *= 2;
+        }
 
-        double totalCookies = (baseClicks.currentLevel + 1) * (clickMulti.currentLevel + 1);
         totalCookies = Math.Floor(totalCookies);
         return totalCookies;
     }
@@ -42,6 +50,11 @@ public class CookieManager : MonoBehaviour
         double addedCookies = CalcClickedCookies();
         cookies.value = cookies.value + addedCookies;
         onCookiesUpdated.Invoke();
+
+        if ((totalClicks.value % clicksPerGold.GetFinalValue()) == 0 && GoldenClicksUnlcok.currentLevel == 1){
+            TurnGolden();
+        }
+
     }
 
     public void updateCookieText(){
@@ -58,11 +71,11 @@ public class CookieManager : MonoBehaviour
         
     }
 
-    private double CalculateBaseClicks(){
-
-        
-// Left off here
-        return 1f;
+    public void TurnGolden(){
+        Debug.Log("Golden");
+        isGolden = true;
+        turnGold.Invoke();
     }
+    
 
 }

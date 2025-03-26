@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "Upgrade", menuName = "Upgrades/Upgrade")]
-
-public class Upgrade : ScriptableObject
+public abstract class Upgrade : ScriptableObject
 {
 
     // Upgrade Info
     public string upgradeName;
     public Sprite image;
     public string description;
-
-    public UnityEvent test;
 
     // Upgrade Level
     public int currentLevel;
@@ -79,5 +75,8 @@ public class Upgrade : ScriptableObject
     public void SetLevel(int level){
         currentLevel = level;
     }
+
+    public abstract void applyUpgrade();
+    public abstract void removeUpgrade();
 
 }
