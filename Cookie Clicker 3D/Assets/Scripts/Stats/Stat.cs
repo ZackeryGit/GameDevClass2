@@ -5,18 +5,23 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Stat", menuName = "Stats/Stat")]
 public class Stat : ScriptableObject
 {
+
+    public event Action<float> OnStatChanged;
+
     public double baseValue;
     private Dictionary<string, Modifier> modifiers = new Dictionary<string, Modifier>();
 
     public void AddorUpdateModifier(Modifier modifier){
         Debug.Log("Modifer Added to: " + name);
         modifiers[modifier.modifierName] = modifier;
+        NotifyStatChange();
     }
 
     public void RemoveModifier(string modifierName){
 
         if (modifiers.ContainsKey(modifierName)){
             modifiers.Remove(modifierName);
+            NotifyStatChange();
         }
 
     }
@@ -49,6 +54,11 @@ public class Stat : ScriptableObject
         }
 
         return finalValue * multiplicativeFactor;
+    }
+
+    private void NotifyStatChange()
+    {
+        OnStatChanged?.Invoke((float)GetFinalValue());
     }
 
 }

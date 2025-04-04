@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class SaveUpgrades : MonoBehaviour
 {
     public UpgradeManager upgradeManager;
-    
+    public UnityEvent onSave, onLoad;
+
     public void SaveData(){
         foreach(Upgrade upgrade in upgradeManager.allUpgrades){
 
@@ -12,6 +14,7 @@ public class SaveUpgrades : MonoBehaviour
         }
 
         PlayerPrefs.Save();
+        onSave.Invoke();
 
     }
 
@@ -19,9 +22,10 @@ public class SaveUpgrades : MonoBehaviour
         foreach(Upgrade upgrade in upgradeManager.allUpgrades){
 
             upgrade.currentLevel = PlayerPrefs.GetInt(upgrade.upgradeName, 0);
-
+            
         }
 
+        onLoad.Invoke();
         
     }
 }
