@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57c0203946350b2498b0341e07b06634, type: 3}
+  m_Name: Unlock Chests
+  m_EditorClassIdentifier: 
+  upgradeName: Unlock Chests
+  image: {fileID: 0}
+  description: Unlocks chests that reward you with large ammounts of cookies
+  currentLevel: 1
+  maxLevel: 1
+  mainPrerequisite: {fileID: 0}
+  prerequisites:
+  - {fileID: 11400000, guid: 8817fb06bc221ee4faa06c5abd1e2f90, type: 2}
+  costList: []
+  useCostList: 0
+  baseCost: 25000
+  linearIncrease: 200
+  quadraticalIncrease: 200
+  scaleIntensity: 2
+  unlock:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 1f9ae3c78518c9c499b1c00fc77f848d, type: 2}
+        m_TargetAssemblyTypeName: GameAction, Assembly-CSharp
+        m_MethodName: RaiseAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

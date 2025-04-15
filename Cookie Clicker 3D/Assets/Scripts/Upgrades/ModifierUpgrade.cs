@@ -18,6 +18,7 @@ public abstract class ModifierUpgrade : Upgrade
         appliedModifier = new Modifier(this.name, getScaledValue(), modifierType);
         foreach (Stat stat in appliedStats){
             stat.AddorUpdateModifier(appliedModifier);
+            Debug.Log("Upgrade Applied: " + name);
         }
     }
 

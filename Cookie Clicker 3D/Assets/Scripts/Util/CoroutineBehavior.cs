@@ -13,6 +13,9 @@ public class CoroutineBehavior : MonoBehaviour
     private WaitForSeconds wfsObj;
     private WaitForFixedUpdate wffuObj;
 
+    private Coroutine countingCoroutine;
+    private Coroutine repeatUntilFalseCoroutine;
+
     public bool CanRun { get => canRun; set => canRun = value; }
 
     // Start is called before the first frame update
@@ -23,8 +26,12 @@ public class CoroutineBehavior : MonoBehaviour
         wffuObj = new WaitForFixedUpdate();
     }
 
-    public void startCounting(){
-        StartCoroutine(Counting());
+    public void startCounting()
+    {
+        if (countingCoroutine != null)          // Stop if already running
+            StopCoroutine(countingCoroutine);
+
+        countingCoroutine = StartCoroutine(Counting());
     }
 
     private IEnumerator Counting()
@@ -40,19 +47,26 @@ public class CoroutineBehavior : MonoBehaviour
             yield return wfsObj;
         }
 
+        countingCoroutine = null;   
         endCountEvent.Invoke();
 
     }
 
-    public void StartRepeatUntilFalse(){
+    public void StartRepeatUntilFalse()
+    {
         CanRun = true;
-        StartCoroutine(RepeatUntilFalse());
-        print("startrepeat");
+
+        if (repeatUntilFalseCoroutine != null)
+            StopCoroutine(repeatUntilFalseCoroutine);
+
+        repeatUntilFalseCoroutine = StartCoroutine(RepeatUntilFalse());
+        Debug.Log("startrepeat");
     }
 
 
 
     private IEnumerator RepeatUntilFalse(){
+        
         yield return wfsObj;
         Debug.Log("repeat1");
         while(CanRun)
@@ -61,11 +75,26 @@ public class CoroutineBehavior : MonoBehaviour
             yield return wfsObj;
             Debug.Log("repeat");
         }
+
+        repeatUntilFalseCoroutine = null;
     }
 
     public void UpdateWaitTime(float newInterval)
     {
         interval = newInterval;
         wfsObj = new WaitForSeconds(interval);
+
+        // Restart both coroutines if they're active
+        if (countingCoroutine != null)
+        {
+            StopCoroutine(countingCoroutine);
+            countingCoroutine = StartCoroutine(Counting());
+        }
+
+        if (repeatUntilFalseCoroutine != null)
+        {
+            StopCoroutine(repeatUntilFalseCoroutine);
+            repeatUntilFalseCoroutine = StartCoroutine(RepeatUntilFalse());
+        }
     }
 }

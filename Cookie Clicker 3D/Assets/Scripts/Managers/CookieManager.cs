@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -27,9 +25,17 @@ public class CookieManager : MonoBehaviour
         onStart.Invoke();
     }
 
-    public double CalcClickedCookies(){
+    public double CalculateBaseClick(){
         double totalCookies = BaseClickStat.GetFinalValue() * ClickMultiplier.GetFinalValue();
-        
+
+        totalCookies = Math.Floor(totalCookies);
+        return totalCookies;
+    }
+
+    public double CalculatedBoostedClick(){
+        double totalCookies = CalculateBaseClick();
+
+
         //Gold boost
         if (isGolden) {
             isGolden = false;
@@ -47,7 +53,7 @@ public class CookieManager : MonoBehaviour
 
     public void CookieClicked(){
         totalClicks.value ++;
-        double addedCookies = CalcClickedCookies();
+        double addedCookies = CalculateBaseClick();
         cookies.value = cookies.value + addedCookies;
         onCookiesUpdated.Invoke();
 
@@ -71,6 +77,7 @@ public class CookieManager : MonoBehaviour
         
     }
 
+    // Status Effect
     public void TurnGolden(){
         Debug.Log("Golden");
         isGolden = true;

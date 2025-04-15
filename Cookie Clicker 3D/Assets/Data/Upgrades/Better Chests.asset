@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15578dbdace84464db9834c714b6f7ef, type: 3}
-  m_Name: More Golden Clicks
+  m_Name: Better Chests
   m_EditorClassIdentifier: 
-  upgradeName: More Golden Clicks
-  image: {fileID: 21300000, guid: ade519461e67c9442b79adfdd1386eb8, type: 3}
-  description: -1 Click required for golden cookie
+  upgradeName: Better Chests
+  image: {fileID: 0}
+  description: Makes Chests more Valuable
   currentLevel: 0
-  maxLevel: 25
+  maxLevel: 10
   mainPrerequisite: {fileID: 11400000, guid: 8817fb06bc221ee4faa06c5abd1e2f90, type: 2}
   prerequisites:
-  - {fileID: 11400000, guid: 175ced644a7827e44b5ab78ac333c9e7, type: 2}
+  - {fileID: 11400000, guid: b1ce7051d2c7abd41a3f28cb39b74861, type: 2}
   costList: []
   useCostList: 0
-  baseCost: 850
-  linearIncrease: 650
-  quadraticalIncrease: 350
-  scaleIntensity: 2.2
+  baseCost: 2500
+  linearIncrease: 200
+  quadraticalIncrease: 200
+  scaleIntensity: 2
   modifierType: 0
   appliedStats:
-  - {fileID: 11400000, guid: d3492889965ab954499bcfc9385dc1a1, type: 2}
+  - {fileID: 11400000, guid: 44be2bcdeda77dd4cbc9253dbf281f99, type: 2}
   modifierBase: 0
-  modifierLinear: -1
+  modifierLinear: 0.2

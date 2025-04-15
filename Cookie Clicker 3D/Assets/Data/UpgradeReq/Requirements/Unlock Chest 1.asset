@@ -9,7 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4de60f2bab3ba94e916ad5e7dfbb2c0, type: 3}
-  m_Name: ChestSpawnTime
+  m_Script: {fileID: 11500000, guid: 06e1a71cbb2ce464ab6df403bd394945, type: 3}
+  m_Name: Unlock Chest 1
   m_EditorClassIdentifier: 
-  baseValue: 11
+  upgrade: {fileID: 11400000, guid: 2a2fe3070e04fa44c947ac8fa20e9368, type: 2}
+  level: 1

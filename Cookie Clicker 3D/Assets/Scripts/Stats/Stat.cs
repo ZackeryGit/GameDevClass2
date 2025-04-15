@@ -52,7 +52,7 @@ public class Stat : ScriptableObject
                     break;
             }
         }
-
+        Debug.Log(finalValue * multiplicativeFactor);
         return finalValue * multiplicativeFactor;
     }
 

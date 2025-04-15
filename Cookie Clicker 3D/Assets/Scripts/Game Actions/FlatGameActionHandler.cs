@@ -1,8 +1,9 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameActionHandler : MonoBehaviour
+public class FlatGameActionHandler : MonoBehaviour
 {
     public GameAction gameActionObj;
     public UnityEvent onRaiseEvent;

@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Add +1x to your cookie multiplier
   currentLevel: 0
   maxLevel: 25
-  mainPrerequisite: {fileID: 11400000, guid: 8d5a1f45cbc63b643b3612959eebcc6d, type: 2}
+  mainPrerequisite: {fileID: 0}
   prerequisites:
   - {fileID: 11400000, guid: 8817fb06bc221ee4faa06c5abd1e2f90, type: 2}
   costList: []
@@ -29,5 +29,5 @@ MonoBehaviour:
   modifierType: 2
   appliedStats:
   - {fileID: 11400000, guid: 360af83d790973a46b5fa0794a7545db, type: 2}
-  modifierBase: 0
+  modifierBase: 1
   modifierLinear: 1

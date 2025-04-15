@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06e1a71cbb2ce464ab6df403bd394945, type: 3}
-  m_Name: Click Mult 0
+  m_Script: {fileID: 11500000, guid: c4de60f2bab3ba94e916ad5e7dfbb2c0, type: 3}
+  m_Name: ChestMultiplier
   m_EditorClassIdentifier: 
-  upgrade: {fileID: 11400000, guid: 022228daeba884c4781553a52d3f65dd, type: 2}
-  level: 0
+  baseValue: 1

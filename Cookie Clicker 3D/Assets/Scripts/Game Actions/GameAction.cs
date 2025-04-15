@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-[CreateAssetMenu]
+[CreateAssetMenu(fileName = "Game Action", menuName = "Actions/Action")]
 public class GameAction : ScriptableObject
 {
 
