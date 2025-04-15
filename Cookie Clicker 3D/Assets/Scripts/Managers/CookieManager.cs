@@ -32,7 +32,7 @@ public class CookieManager : MonoBehaviour
         return totalCookies;
     }
 
-    public double CalculatedBoostedClick(){
+    public double CalculateBoostedClick(){
         double totalCookies = CalculateBaseClick();
 
 
@@ -53,7 +53,7 @@ public class CookieManager : MonoBehaviour
 
     public void CookieClicked(){
         totalClicks.value ++;
-        double addedCookies = CalculateBaseClick();
+        double addedCookies = CalculateBoostedClick();
         cookies.value = cookies.value + addedCookies;
         onCookiesUpdated.Invoke();
 
